@@ -1,0 +1,153 @@
+/*
+ * Reference for the css style of the forms
+ * link : https://codepen.io/dope/pen/ZQWBeL?editors=1100
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    background-size: 200% 100% !important;
+    background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);
+    font-weight: 100;    
+}
+
+.stock {
+    width: 90%;
+    max-width: 340px;
+    margin: 10vh auto;
+}
+
+.stock_header {
+    text-align: center;
+    opacity: 0;
+}
+
+.stock_title {
+    font-size: 35px;
+    text-align: center;
+    font-weight: 500;
+    color: white;
+}
+
+.headings {
+    font-size: 25px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+.smallheadings {
+    font-size: 16px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: white;
+
+}
+
+.err {
+    font-weight: 500;
+    color: purple;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-top: -18px;
+    margin-bottom: -12px;
+}
+
+
+.form {
+    margin-top: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    animation: arrive 500ms ease-in-out 0.1s forwards;
+    background-color: rgba(255, 255, 255, 0.13);
+}
+
+
+.form__input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    transition: 0.3s;
+    color: #2b2d2f;
+}
+.form__input:hover {
+    background-color: rgba(255, 255, 255, 0.747);
+} 
+
+.submit_row {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    -webkit-appearance: none;
+    outline: 0;
+    border: 0;
+    color: white;
+    background: #55608f;
+    transition: 0.3s;
+    font-size: 18px;
+
+}
+
+.submit_row:hover {
+    background: rgba(36, 36, 36, 0.664);
+} 
+
+@keyframes NO {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes arrive {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 50px, 0);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes move {
+    0% {
+        background-position: 0 0
+    }
+
+    50% {
+        background-position: 100% 0
+    }
+
+    100% {
+        background-position: 0 0
+    }
+}

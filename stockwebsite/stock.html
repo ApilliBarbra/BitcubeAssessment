@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<div class="stock">
+<head class="stock_header">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/stock.scss">
+  <link rel="stylesheet" href="css/table.css">
+  <script src="js/stock.js"></script> 
+
+  <h1 class="stock_title">A Stock Management System</h1>
+</head>
+
+<body>
+
+<section>
+
+    <div class="container">
+      <h2 class="headings">Add Stock</h2>
+      <p class="err" id="error_add"></p>
+      <form id="add" class="form" onsubmit="addStock()">
+        <div class="row">
+          <div class="smallheadings">
+            <label for="addproducts">Select a product code</label>
+          </div>
+          <div class="col-75">
+            <select class="form__input" id="addproducts" name="Select a product code">
+              <option disabled selected value > -- select an option -- </option>              
+              <option value="product01">Product 01</option>
+              <option value="product02">Product 02</option>
+              <option value="product03">Product 03</option>
+            </select>
+          </div>
+        </div>        
+
+        <div class="row">
+          <div class="smallheadings">
+            <label for="itemsRecvd">Items Received</label>
+          </div>
+          <div >
+            <input class="form__input" type="number" min="1" step="1" id="itemsRecvd" name="Items Received" placeholder="4">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="smallheadings">
+            <label for="price">Price per Item Received</label>
+          </div>
+          <div>
+            <input class="form__input" type="number" min="0.00" step="0.01" id="price" name="price" placeholder="2400.99">
+          </div>
+        </div>
+
+        <div>
+          <input type="submit" class="submit_row" value="Item Shipped">
+        </div>
+      </form>
+  </div>
+</section>
+
+<section>
+
+    <div class="container">
+      <h2 class="headings">Remove Stock</h2>
+      <p class="err" id="error_remove"></p>
+      <form id="remove" class="form" onsubmit="removeStock()">
+        <div class="row">
+          <div class="smallheadings">
+            <label for="removeproducts">Select a product code</label>
+          </div>
+          <div class="col-75">
+            <select class="form__input" id="removeproducts" name="Select a product code">
+              <option disabled selected value> -- select an option -- </option>    
+              <option value="product01">Product 01</option>
+              <option value="product02">Product 02</option>
+              <option value="product03">Product 03</option>
+            </select>
+          </div>
+        </div>        
+
+        <div class="row">
+          <div class="smallheadings">
+            <label for="itemsBght">Items Bought</label>
+          </div>
+          <div>
+            <input class="form__input" type="number" min="1" step="1" id="itemsBght" name="Items Bought" placeholder="4">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="smallheadings">
+            <label for="email">Buyer Email Address</label>
+          </div>
+          <div>
+            <input class="form__input" type="email" id="email" name="email" placeholder="example@example.com">
+          </div>
+        </div>
+
+        <div>
+          <input type="submit" class="submit_row" value="Item Shipped">
+        </div>
+      </form>
+  </div>
+</section>
+
+<section>
+
+    <div class="container">
+      <h2 class="headings">Stock Levels</h2>
+      <table class="stocktable">
+        <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Average Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr id="okay" >
+          <td>Product 01</td>
+          <td id="prdt01number"></td>
+          <td id="prdt01price"></td>
+        </tr>
+        <tr>
+          <td>Product 02</td>
+          <td id="prdt02number"></td>
+          <td id="prdt02price"></td>
+        </tr>
+        <tr>
+          <td>Product 03</td>
+          <td id="prdt03number"></td>
+          <td id="prdt03price"></td>
+        </tr>        
+        </tbody>
+      </table>
+    </div>
+</section>
+
+</body>
+</div>
+</html>
