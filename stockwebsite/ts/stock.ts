@@ -10,7 +10,7 @@ window.onbeforeunload = function() {
 
 window.onload = function() {
 
-    var price;
+    var price:number;
 
     if ('errs' in localStorage) {
 
@@ -39,21 +39,21 @@ window.onload = function() {
     }
 
 
-    document.getElementById("add").reset();
-    document.getElementById("remove").reset();
+    (<HTMLFormElement>document.getElementById("add")).reset();
+    (<HTMLFormElement>document.getElementById("remove")).reset();
 
     if (!('prdt1number' in localStorage)){
 
         localStorage.prdt1number = 0;
         localStorage.prdt1price = 0;
 
-        document.getElementById("prdt01number").innerHTML = 0;
-        document.getElementById('prdt01price').innerHTML = 0;
+        document.getElementById("prdt01number").innerHTML = String(0);
+        document.getElementById('prdt01price').innerHTML = String(0);
     } else {
 
         price = localStorage.prdt1price;
-        document.getElementById("prdt01number").innerHTML = localStorage.prdt1number;
-        document.getElementById('prdt01price').innerHTML =  Math.round(price*100)/100;
+        document.getElementById("prdt01number").innerHTML = String(localStorage.prdt1number);
+        document.getElementById('prdt01price').innerHTML =  String(Math.round(price*100)/100);
     }
 
 
@@ -62,13 +62,13 @@ window.onload = function() {
         localStorage.prdt2number = 0;
         localStorage.prdt2price = 0;
 
-        document.getElementById("prdt02number").innerHTML = 0;
-        document.getElementById('prdt02price').innerHTML = 0;
+        document.getElementById("prdt02number").innerHTML = String(0);
+        document.getElementById('prdt02price').innerHTML = String(0);
     } else {
 
         price = localStorage.prdt2price;
-        document.getElementById("prdt02number").innerHTML = localStorage.prdt2number;
-        document.getElementById('prdt02price').innerHTML =  Math.round(price*100)/100;
+        document.getElementById("prdt02number").innerHTML = String(localStorage.prdt2number);
+        document.getElementById('prdt02price').innerHTML =  String(Math.round(price*100)/100);
     }
 
 
@@ -77,23 +77,23 @@ window.onload = function() {
         localStorage.prdt3number = 0;
         localStorage.prdt3price = 0;
 
-        document.getElementById("prdt03number").innerHTML = 0;
-        document.getElementById('prdt03price').innerHTML = 0;
+        document.getElementById("prdt03number").innerHTML = String(0);
+        document.getElementById('prdt03price').innerHTML = String(0);
     } else {
 
         price = localStorage.prdt3price;
-        document.getElementById("prdt03number").innerHTML = localStorage.prdt3number;
-        document.getElementById('prdt03price').innerHTML =  Math.round(price*100)/100;
+        document.getElementById("prdt03number").innerHTML = String(localStorage.prdt3number);
+        document.getElementById('prdt03price').innerHTML =  String(Math.round(price*100)/100);
     }
 
 };
 
 
-function addStock() {
+ function addStock() : void {
 
-    var prdt = document.getElementById("addproducts").value;
-    var number = document.getElementById("itemsRecvd").value;
-    var price = document.getElementById("price").value;
+    var prdt = (<HTMLInputElement>document.getElementById("addproducts")).value;
+    var number = (<HTMLInputElement>document.getElementById("itemsRecvd")).value;
+    var price = (<HTMLInputElement>document.getElementById("price")).value;
 
     if (!number || !price || !prdt) {
 
@@ -104,8 +104,8 @@ function addStock() {
 
     } else {
         
-        var prdtnum;
-        var avgprice;
+        var prdtnum:number;
+        var avgprice:number;
 
         if (prdt === "product01") {
 
@@ -157,10 +157,10 @@ function addStock() {
 }
 
  
-function removeStock() {
-    var prdt = document.getElementById("removeproducts").value;
-    var number = document.getElementById("itemsBght").value;
-    var email = document.getElementById("email").value;
+function removeStock() : void {
+    var prdt = (<HTMLInputElement>document.getElementById("removeproducts")).value;
+    var number = (<HTMLInputElement>document.getElementById("itemsBght")).value;
+    var email = (<HTMLInputElement>document.getElementById("email")).value;
 
     if (!number || !email || !prdt) {
 
@@ -171,7 +171,7 @@ function removeStock() {
 
     } else {
         
-        var prdtnum;
+        var prdtnum : number;
 
         if (prdt === "product01") {
 
@@ -238,13 +238,13 @@ function removeStock() {
     //check if email is there
     if (!('emails' in localStorage)){
 
-        var emls = [];
+        var emls:string[] = [];
         emls.push(email);
         localStorage.setItem('emails', JSON.stringify(emls));
 
     } else {
     
-        var emls = null;
+        var emls:string[] = null;
         var emailsFromLocalStorage = localStorage.getItem('emails');
 
         if (emailsFromLocalStorage && 'emails' in localStorage){
@@ -263,7 +263,8 @@ function removeStock() {
         } else {
 
 
-            if (emls.includes(email)) {
+            if (email in emls) {
+            //if (emls.includes(email)) {
                 var err = ['error_remove', "Email already used to purchase products"];
                 //set errs array
                 localStorage.setItem('errs', JSON.stringify(err));
